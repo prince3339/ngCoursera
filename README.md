@@ -1,2 +1,0 @@
-# ngCoursera
-Angular Practice Project
