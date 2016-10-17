@@ -11,7 +11,7 @@
           $scope.lunchMenu =$scope.lunchMenu.split(" ").join();
           $scope.totalMenuItems = $scope.lunchMenu.split(",");
 
-          console.log($scope.lunchMenu);
+          //console.log($scope.lunchMenu);
         }else {
           $scope.totalMenuItems = 0;
         }
@@ -27,7 +27,7 @@
         }else {
           $scope.message = "Please enter data first";
         }
-        console.log($scope.lunchMenu);
+        //console.log($scope.lunchMenu);
       }
     }
 })()
