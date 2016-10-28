@@ -12,7 +12,9 @@
     <div ng-controller='MsgController'>
       {{name}} has a message for you: <br>
       Original : {{sayMessage()}} <br>
-      Loves : {{sayLovesMessage()}}
+      Loves : {{sayLovesMessage()}} <br>
+      LovesAdvance : {{sayLovesMessage() | lovesAdvance : 'Yaakov' : 'Prince'}} <br>
+      <input type="text" ng-model="my_name">
       <div>
         <button ng-click="feedYaakov()">Feed Yaakov</button>
         Cost: {{cookieCost | currency:"TK " : 4}}

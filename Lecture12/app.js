@@ -3,8 +3,8 @@
 
 angular.module('MsgApp', [])
 .controller('MsgController', MsgController)
-.filter('loves', LovesFilter);
-
+.filter('loves', LovesFilter)
+.filter('lovesAdvance', LovesFilterAdvance);
 MsgController.$inject = ['$scope', '$filter', "lovesFilter"];
 function MsgController($scope, $filter, lovesFilter) {
   $scope.name = "Yaakov";
@@ -27,12 +27,29 @@ function MsgController($scope, $filter, lovesFilter) {
   $scope.feedYaakov = function () {
     $scope.stateOfBeing = "fed";
   };
+
+
+  $scope.$watch('stateOfBeing' ,function(newValue, oldValue) {
+    console.log(newValue, oldValue);
+  });
+
+  $scope.$watch(function() {
+    console.log("Digest !!");
+  });
 }
 
 function LovesFilter() {
   return function (input) {
     input = input || "";
     input = input.replace("likes", "loves");
+    return input;
+  };
+}
+
+function LovesFilterAdvance() {
+  return function (input, target, replace) {
+    input = input || "";
+    input = input.replace(target, replace);
     return input;
   };
 }
