@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-size: 1.2em;
 }
@@ -11,3 +12,18 @@ body {
 .error {
   color: red;
 }
+=======
+body {
+  font-size: 1.2em;
+}
+#list1, #list2 {
+  float: left;
+}
+#list2 {
+  margin-left: 40px;
+}
+
+.error {
+  color: red;
+}
+>>>>>>> 5b3df876352694d4dcc51a2f48e83b3b095dc66d
