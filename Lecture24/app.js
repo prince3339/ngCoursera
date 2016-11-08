@@ -32,45 +32,45 @@ function ShoppingListService($q, WeightLossFilterService) {
   // List of shopping items
   var items = [];
 
-  // service.addItem = function (name, quantity) {
-  //   var promise = WeightLossFilterService.checkName(name);
-  //
-  //   promise.then(function (response) {
-  //     var nextPromise = WeightLossFilterService.checkQuantity(quantity);
-  //
-  //     nextPromise.then(function (result) {
-  //       var item = {
-  //         name: name,
-  //         quantity: quantity
-  //       };
-  //       items.push(item);
-  //     }, function (errorResponse) {
-  //       console.log(errorResponse.message);
-  //     });
-  //   }, function (errorResponse) {
-  //     console.log(errorResponse.message);
-  //   });
-  // };
+  service.addItem = function (name, quantity) {
+    var promise = WeightLossFilterService.checkName(name);
+
+    promise.then(function (response) {
+      var nextPromise = WeightLossFilterService.checkQuantity(quantity);
+
+      nextPromise.then(function (result) {
+        var item = {
+          name: name,
+          quantity: quantity
+        };
+        items.push(item);
+      }, function (errorResponse) {
+        console.log(errorResponse.message);
+      });
+    }, function (errorResponse) {
+      console.log(errorResponse.message);
+    });
+  };
 
 
-  // service.addItem = function (name, quantity) {
-  //   var promise = WeightLossFilterService.checkName(name);
-  //
-  //   promise
-  //   .then(function (response) {
-  //     return WeightLossFilterService.checkQuantity(quantity);
-  //   })
-  //   .then(function (response) {
-  //     var item = {
-  //       name: name,
-  //       quantity: quantity
-  //     };
-  //     items.push(item);
-  //   })
-  //   .catch(function (errorResponse) {
-  //     console.log(errorResponse.message);
-  //   });
-  // };
+  service.addItem = function (name, quantity) {
+    var promise = WeightLossFilterService.checkName(name);
+
+    promise
+    .then(function (response) {
+      return WeightLossFilterService.checkQuantity(quantity);
+    })
+    .then(function (response) {
+      var item = {
+        name: name,
+        quantity: quantity
+      };
+      items.push(item);
+    })
+    .catch(function (errorResponse) {
+      console.log(errorResponse.message);
+    });
+  };
 
 
   service.addItem = function (name, quantity) {
