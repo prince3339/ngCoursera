@@ -15,6 +15,7 @@ function MenuCategoriesController(MenuCategoriesService) {
 
   promise.then(function (response) {
     menu.categories = response.data;
+    console.log(menu.categories);
   })
   .catch(function (error) {
     console.log("Something went terribly wrong.");
