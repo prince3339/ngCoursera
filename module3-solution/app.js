@@ -6,37 +6,50 @@
 
     NarrowItDownController.$inject = ["MenuSearchService"];
     function NarrowItDownController (MenuSearchService) {
-      var ctrl = this;
-      ctrl.searchItem = "";
-      var promise = MenuSearchService.getEniterMenuItems();
-      promise.then(function(response) {
-          ctrl.menuItems = response.data;
-          console.log(ctrl.menuItems.menu_items);
-          for(var i=0; i<=ctrl.menuItems.menu_items.length; i++) {
-            if(ctrl.menuItems.menu_items[i]) {
-              var description = ctrl.menuItems.menu_items[i].description;
-              if(description == "chicken broth with egg drop") {
-                  console.log("Found");
-              }
-            }
-          }
-        //  console.log(ctrl.menuItems.description);
-      }).catch(function (error) {
-          console.log(error);
-      })
+        var ctrl = this;
+        ctrl.searchItem = "";
+
+        ctrl.narrowDown = function (search) {
+            var promise = MenuSearchService.getMatchedMenuItems(search);
+            promise.then(function (result) {
+              ctrl.showFoundItems = result;
+            })
+        }
     }
 
     MenuSearchService.$inject = ["$http"];
     function MenuSearchService ($http) {
       var service = this;
 
-      service.getEniterMenuItems = function () {
-        var response = $http({
-          method: "GET",
-          url: "https://davids-restaurant.herokuapp.com/menu_items.json"
-        });
+      service.getMatchedMenuItems = function (searchItem) {
+        return $http({
+            method: "GET",
+            url: "https://davids-restaurant.herokuapp.com/menu_items.json"
 
-        return response;
+          }).then(function(response) {
+              var menuItems = response.data;
+              var count = 0;
+              console.log(menuItems.menu_items);
+              var foundItems = [];
+              if(searchItem === undefined || searchItem == "") {
+                var notFoundCheck = true;
+              }else{
+                for(var i=0; i<=menuItems.menu_items.length; i++) {
+                  if(menuItems.menu_items[i]) {
+                    var description = menuItems.menu_items[i].description.toLowerCase();
+                    if(description.indexOf(searchItem.toLowerCase()) !==-1) {
+                        console.log("Found");
+                        foundItems.push(menuItems.menu_items[i]);
+                    }
+                  }
+                }
+                console.log(foundItems);
+                return foundItems;
+              }
+          }).catch(function (error) {
+              console.log(error);
+        })
+
       }
 
     }
