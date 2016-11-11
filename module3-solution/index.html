@@ -21,17 +21,12 @@
           </div>
         </div>
 
-        <ol ng-if="ctrl.showFoundItems.length >0">
-          <li ng-repeat="items in ctrl.showFoundItems">
-            <span>{{items.name}}</span>, <span>{{items.short_name}}</span>, <span>{{items.description}}</span>
-          </li>
-        </ol>
-
-        <div ng-if="ctrl.showFoundItems.length === 0 || ctrl.notFoundCheck" class="">
+        <!-- found-items should be implemented as a component -->
+        <found-items found-menu-items="ctrl.showFoundItems" on-remove="ctrl.removeItem(index)"></found-items>
+        <div class="danger" ng-if="(ctrl.showFoundItems.length === 0 || ctrl.notFoundCheck) && !ctrl.loading">
           Nothing found
         </div>
-        <!-- found-items should be implemented as a component -->
-        <found-items found-items="...." on-remove="...."></found-items>
+        <div ng-if="ctrl.loading" ng-include="'loader/itemsloaderindicator.template.html'"></div>
       </div>
     </div>
   </div>
