@@ -17,17 +17,16 @@
             <input type="text" placeholder="search term" ng-model="ctrl.searchItem" class="form-control">
           </div>
           <div class="form-group narrow-button">
-            <button class="btn btn-primary">Narrow It Down For Me!</button>
+            <button class="btn btn-primary" ng-click="ctrl.narrowDown(ctrl.searchItem)">Narrow It Down For Me!</button>
           </div>
         </div>
 
-        <ul>
-          <li ng-repeat="items in ctrl.menuItems.menu_items">
-            {{items.name}}
-          </li>
-        </ul>
         <!-- found-items should be implemented as a component -->
-        <found-items found-items="...." on-remove="...."></found-items>
+        <found-items found-menu-items="ctrl.showFoundItems" on-remove="ctrl.removeItem(index)"></found-items>
+        <div class="danger" ng-if="(ctrl.showFoundItems.length === 0 || ctrl.notFoundCheck) && !ctrl.loading">
+          Nothing found
+        </div>
+        <div ng-if="ctrl.loading" ng-include="'loader/itemsloaderindicator.template.html'"></div>
       </div>
     </div>
   </div>

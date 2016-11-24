@@ -1,0 +1,6 @@
+<ol ng-if="ctrl.foundMenuItems.length >0">
+  <li ng-repeat="items in ctrl.foundMenuItems" class="padding-v-10">
+    <span>{{items.name}}</span>, <span>{{items.short_name}}</span>, <span>{{items.description}}</span>
+    <button ng-click="ctrl.onRemove({index: $index})" class="btn btn-danger">Don't want this one!</button>
+  </li>
+</ol>
