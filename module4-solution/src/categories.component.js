@@ -1,12 +1,12 @@
 (function () {
 'use strict';
 
-  angular.module('data')
-         .component('categories', {
-           templateUrl: 'src/templates/categories.template.html',
-           bindings: {
-             categoryList: '<'
-           }
-         })
+angular.module('data')
+.component('categoryList', {
+  templateUrl: 'src/templates/categories.template.html',
+  bindings: {
+    categoryList: '<'
+  }
+});
 
-})()
+})();

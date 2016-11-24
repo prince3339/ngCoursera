@@ -12,16 +12,16 @@
     dataService.getAllCategories = function () {
       var response = $http({
         method: "GET",
-        url: getCatApiBase + "/categories.json"
+        url: ApiBasePath + "/categories.json"
       });
-
+      //console.log("Working");
       return response;
     }
 
     dataService.getItemsForCategory = function (categoryShortName) {
       var response = $http({
         method: "GET",
-        url: ApiBasePath + "/",
+        url: ApiBasePath + "/menu_items.json",
         params: {
           category: categoryShortName
         }

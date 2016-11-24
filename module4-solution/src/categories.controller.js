@@ -7,7 +7,7 @@
   categoriesController.$inject = ["categories"];
   function categoriesController (categories) {
     var ctrl = this;
-
-    ctrl.categories = categories;
+    ctrl.categoriesLists = categories;
+    console.log(categories);
   }
 })()
