@@ -1,0 +1,19 @@
+<div class="container">
+  <div style="width:50%; margin:0 auto;" class="">
+    <div class="thumbnail" ng-if="userCtrl.myInfo">
+        <img ng-src="{{userCtrl.basePath}}/images/{{userCtrl.myInfo.menuNo}}.jpg" alt="...">
+    </div>
+    <ul class="list-group" ng-if="userCtrl.myInfo">
+      <li style="background: transparent;" class="list-group-item">First Name: {{userCtrl.myInfo.firstName}}</li>
+      <li style="background: transparent;" class="list-group-item">Last Name: {{userCtrl.myInfo.lastName}}</li>
+      <li style="background: transparent;" class="list-group-item">Email: {{userCtrl.myInfo.email}}</li>
+      <li style="background: transparent;" class="list-group-item">Phone no: {{userCtrl.myInfo.phoneNo}}</li>
+      <li style="background: transparent;" class="list-group-item">Menu No: {{userCtrl.myInfo.menuNo}}</li>
+      <li style="background: transparent;" class="list-group-item">Menu Name: {{userCtrl.myInfo.menuInfo.name}}</li>
+      <li style="background: transparent;" class="list-group-item">Menu Description: {{userCtrl.myInfo.menuInfo.description}}</li>
+    </ul>
+    <h2 class="text-center" ng-if="!userCtrl.myInfo">
+      Not Signed Up Yet. <a ui-sref="public.signUp">Sign up Now!</a>
+    </h2>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+  <h2 class="text-center">SignUp Form</h2>
+  <form style="width:50%; margin:0 auto;" ng-submit="signUpCtrl.saveInfo(signUpCtrl.user)" name="signUpForm" novalidate>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text"
+             class="form-control"
+             name="firstName"
+             ng-model="signUpCtrl.user.firstName"
+             placeholder="First Name"
+             required>
+      <div class="" ng-if="signUpForm.firstName.$error.required && signUpForm.firstName.$touched">
+        <span>First Name can't be empty!</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" name="lastName" ng-model="signUpCtrl.user.lastName" placeholder="Last Name" required>
+
+      <div class="" ng-if="signUpForm.lastName.$error.required && signUpForm.lastName.$touched">
+        <span>Last Name can't be empty!</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" class="form-control" name="email" ng-model="signUpCtrl.user.email" placeholder="Email Address" required>
+
+      <div class="" ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+        <span>Enter valid Email address!</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phoneNo">Phone Number</label>
+      <input type="text" class="form-control" name="phoneNo" ng-model="signUpCtrl.user.phoneNo" placeholder="Phone Number"
+      pattern="(\d{5})-(\d{6})"
+      required="">
+
+      <div class="" ng-if="(signUpForm.phoneNo.$invalid && signUpForm.phoneNo.$touched)">
+        <span>Phone No. must be in the format #####-######.</span>
+      </div>
+      <!-- <div class="" ng-if="signUpForm.phoneNo.$error.required">
+        <span>Phone No. can't be empty</span>
+      </div> -->
+    </div>
+    <div class="form-group">
+      <label for="phoneNo">Menu Number</label>
+      <input type="text" class="form-control" name="menuNo" ng-model="signUpCtrl.user.menuNo" placeholder="Menu Number">
+      <h2 ng-if="signUpCtrl.error">No such menu number exists</h2>
+    </div>
+
+    <h2 ng-if="signUpCtrl.success">Your information has been saved.</h2>
+
+    <button ng-disabled="signUpForm.$invalid" type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

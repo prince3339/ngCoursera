@@ -22,13 +22,8 @@
         controller: 'categoriesController as ctrl',
         resolve: {
           categories: ['MenuDataService', function (MenuDataService) {
-            return MenuDataService.getAllCategories().then(function (response) {
-              //console.log(response.data);
-              return response.data;
-             }).catch(function(error) {
-               console.log(error);
-             })
-          }]
+            return MenuDataService.getAllCategories();
+          }]//
         }
       })
 
