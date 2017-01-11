@@ -19,11 +19,7 @@ function LoadingHttpInterceptor($rootScope, $q) {
 
   return {
     request: function (config) {
-<<<<<<< HEAD
-      console.log("Inside interceptor, config: ", config);
-=======
       // console.log("Inside interceptor, config: ", config);
->>>>>>> 0f6a5fb48711a204db93a723b6fd5275cabfa07d
 
       if (++loadingCount === 1) {
         $rootScope.$broadcast(loadingEventName, {on: true});
